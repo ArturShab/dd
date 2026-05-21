@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Category{
+    id        Int    @id @default(autoincrement())
+    name      String @unique
+    types     Type[]
+}
+
+model Type{
+    id          Int    @id @default(autoincrement())
+    name        String @unique
+    categoryID  Int
+    category    Category @relation(fields: [categoryID], references: [id])
+    specs       Spec[]
+    products    Product[]
+}
+
+model Spec{
+    id          Int    @id @default(autoincrement())
+    name        String @unique
+    typeID      Int
+    type        Type @relation(fields: [typeID], references: [id])
+    value       SpecValue[]
+}
+
+model SpecValue{
+  id          Int    @id @default(autoincrement())
+  specID      Int
+  spec        Spec @relation(fields: [specID], references: [id])
+  productID   Int
+  product     Product @relation(fields: [productID], references: [id])
+  value       String
+}
+
+model Product{
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  price       Int
+  description String? 
+  quantity    Int
+  typeID      Int
+  type        Type @relation(fields: [typeID], references: [id])
+  specs       SpecValue[]
+}
