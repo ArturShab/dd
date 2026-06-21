@@ -218,14 +218,14 @@ export type SpecOrderByWithRelationInput = {
 
 export type SpecWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  name?: string
   AND?: Prisma.SpecWhereInput | Prisma.SpecWhereInput[]
   OR?: Prisma.SpecWhereInput[]
   NOT?: Prisma.SpecWhereInput | Prisma.SpecWhereInput[]
+  name?: Prisma.StringFilter<"Spec"> | string
   typeID?: Prisma.IntFilter<"Spec"> | number
   type?: Prisma.XOR<Prisma.TypeScalarRelationFilter, Prisma.TypeWhereInput>
   value?: Prisma.SpecValueListRelationFilter
-}, "id" | "name">
+}, "id">
 
 export type SpecOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

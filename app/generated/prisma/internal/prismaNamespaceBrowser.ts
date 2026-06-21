@@ -55,7 +55,8 @@ export const ModelName = {
   Type: 'Type',
   Spec: 'Spec',
   SpecValue: 'SpecValue',
-  Product: 'Product'
+  Product: 'Product',
+  Request: 'Request'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -120,6 +121,18 @@ export const ProductScalarFieldEnum = {
 } as const
 
 export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+export const RequestScalarFieldEnum = {
+  id: 'id',
+  phone: 'phone',
+  organization: 'organization',
+  address: 'address',
+  list: 'list',
+  total: 'total'
+} as const
+
+export type RequestScalarFieldEnum = (typeof RequestScalarFieldEnum)[keyof typeof RequestScalarFieldEnum]
 
 
 export const SortOrder = {

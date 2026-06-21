@@ -293,9 +293,9 @@ export type ProductScalarWhereWithAggregatesInput = {
 
 export type ProductCreateInput = {
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   type: Prisma.TypeCreateNestedOneWithoutProductsInput
   specs?: Prisma.SpecValueCreateNestedManyWithoutProductInput
 }
@@ -303,9 +303,9 @@ export type ProductCreateInput = {
 export type ProductUncheckedCreateInput = {
   id?: number
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   typeID: number
   specs?: Prisma.SpecValueUncheckedCreateNestedManyWithoutProductInput
 }
@@ -332,9 +332,9 @@ export type ProductUncheckedUpdateInput = {
 export type ProductCreateManyInput = {
   id?: number
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   typeID: number
 }
 
@@ -472,18 +472,18 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type ProductCreateWithoutTypeInput = {
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   specs?: Prisma.SpecValueCreateNestedManyWithoutProductInput
 }
 
 export type ProductUncheckedCreateWithoutTypeInput = {
   id?: number
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   specs?: Prisma.SpecValueUncheckedCreateNestedManyWithoutProductInput
 }
 
@@ -527,18 +527,18 @@ export type ProductScalarWhereInput = {
 
 export type ProductCreateWithoutSpecsInput = {
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   type: Prisma.TypeCreateNestedOneWithoutProductsInput
 }
 
 export type ProductUncheckedCreateWithoutSpecsInput = {
   id?: number
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
   typeID: number
 }
 
@@ -578,9 +578,9 @@ export type ProductUncheckedUpdateWithoutSpecsInput = {
 export type ProductCreateManyTypeInput = {
   id?: number
   name: string
-  price: number
+  price?: number
   description?: string | null
-  quantity: number
+  quantity?: number
 }
 
 export type ProductUpdateWithoutTypeInput = {

@@ -7,45 +7,54 @@ datasource db {
   provider = "postgresql"
 }
 
-model Category{
-    id        Int    @id @default(autoincrement())
-    name      String @unique
-    types     Type[]
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  types Type[]
 }
 
-model Type{
-    id          Int    @id @default(autoincrement())
-    name        String @unique
-    categoryID  Int
-    category    Category @relation(fields: [categoryID], references: [id])
-    specs       Spec[]
-    products    Product[]
+model Type {
+  id         Int       @id @default(autoincrement())
+  name       String    @unique
+  categoryID Int
+  category   Category  @relation(fields: [categoryID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  specs      Spec[]
+  products   Product[]
 }
 
-model Spec{
-    id          Int    @id @default(autoincrement())
-    name        String @unique
-    typeID      Int
-    type        Type @relation(fields: [typeID], references: [id])
-    value       SpecValue[]
+model Spec {
+  id     Int         @id @default(autoincrement())
+  name   String
+  typeID Int
+  type   Type        @relation(fields: [typeID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  value  SpecValue[]
 }
 
-model SpecValue{
-  id          Int    @id @default(autoincrement())
-  specID      Int
-  spec        Spec @relation(fields: [specID], references: [id])
-  productID   Int
-  product     Product @relation(fields: [productID], references: [id])
-  value       String
+model SpecValue {
+  id        Int     @id @default(autoincrement())
+  specID    Int
+  spec      Spec    @relation(fields: [specID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  productID Int
+  product   Product @relation(fields: [productID], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  value     String
 }
 
-model Product{
-  id          Int    @id @default(autoincrement())
-  name        String @unique
-  price       Int
-  description String? 
-  quantity    Int
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
+  price       Int         @default(0)
+  description String?
+  quantity    Int         @default(0)
   typeID      Int
-  type        Type @relation(fields: [typeID], references: [id])
+  type        Type        @relation(fields: [typeID], references: [id], onDelete: Cascade, onUpdate: Cascade)
   specs       SpecValue[]
+}
+
+model Request {
+  id           Int     @id @default(autoincrement())
+  phone        String
+  organization String?
+  address      String?
+  list         String
+  total        Int
 }

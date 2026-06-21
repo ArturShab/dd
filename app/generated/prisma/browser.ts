@@ -42,3 +42,8 @@ export type SpecValue = Prisma.SpecValueModel
  * 
  */
 export type Product = Prisma.ProductModel
+/**
+ * Model Request
+ * 
+ */
+export type Request = Prisma.RequestModel
